@@ -175,15 +175,11 @@ class Footprint {
       frame = 0;
       float xDiff = 0;
       float yDiff = 0;
-      //if (disideX < 50) {
-        xDiff = noise(xt);
-        x += map(xDiff, 0, 1, -30, 7);
-      //}
-      //if (disideY < 50) {
-        yDiff = noise(yt);
-        y += map(yDiff, 0, 1, -26, 2);
-        y -= 5;
-      //}
+      xDiff = noise(xt);
+      x += map(xDiff, 0, 1, -30, 7);
+      yDiff = noise(yt);
+      y += map(yDiff, 0, 1, -26, 2);
+      y -= 5;
       if (stepFlag) {
         x += w * 1.7;
       }
@@ -196,12 +192,10 @@ class Footprint {
         ellipse(histories[i].x, histories[i].y, w, h);
       }
       
-      //if (!stepFlag) {
-        for (int i=7; i>0; i--) {
-          histories[i] = histories[i-1].copy();
-        }
-        histories[0] = new PVector(x, y);
-      //}
+      for (int i=7; i>0; i--) {
+        histories[i] = histories[i-1].copy();
+      }
+      histories[0] = new PVector(x, y);
       xt += 0.01;
       yt += 0.03;
       stepFlag = (stepFlag) ? false : true;
